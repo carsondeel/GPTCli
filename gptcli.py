@@ -10,9 +10,37 @@ from pygments.token import Keyword, Name, Comment, String, Error, Number, Operat
 from pygments import highlight
 import colorama
 
+#Pygment color scheme
+COLOR_SCHEME = {
+  Token:              ('gray',                 'gray'),
+  Comment:            ('magenta',     'brightmagenta'),
+  Comment.Preproc:    ('magenta',     'brightmagenta'),
+  Keyword:            ('blue',                   '**'),
+  Keyword.Type:       ('green',       '*brightgreen*'),
+  Operator.Word:      ('**',                     '**'),
+  Name.Builtin:       ('cyan',           'brightblue'),
+  Name.Function:      ('blue',           'brightblue'),
+  Name.Class:         ('_green_',        'brightblue'),
+  Name.Decorator:     ('magenta',     'brightmagenta'),
+  Name.Variable:      ('blue',           'brightblue'),
+  String:             ('yellow',       'brightyellow'),
+  Number:             ('blue',         'brightyellow')
+}
+
 #OpenAI authorization
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 #Set AI behavior
 messages=[{'role': 'system', 'content': 'You are a programming assistant in this session.'}]
 
+#Main loop
+while True:
+    try:
+        #Get input from terminal
+        question = input(colorama.Force.CYAN + 'You: ' + colorama.Style.RESET_ALL, end='')
+        if question == 'quit': 
+            break
+
+        #
+    except:
+        print(colorama.Fore.YELLOW + "ChatGPT: I'm busy")
