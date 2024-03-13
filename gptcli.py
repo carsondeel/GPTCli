@@ -41,6 +41,16 @@ while True:
         if question == 'quit': 
             break
 
-        #
+        #Feed question to ChatGPT
+        messages.append({
+            'role': 'user',
+            'content': question
+        })
+
+        #API response
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=messages
+        )
     except:
         print(colorama.Fore.YELLOW + "ChatGPT: I'm busy")
