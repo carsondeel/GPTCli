@@ -56,12 +56,19 @@ while True:
         #Get text from API response
         answer = response['choices'][0]['message']['content']
 
-        #Add messages
+        #Add messages to array
         messages.append({
             'role': 'assistant',
             'content': answer
         })
 
-        
+        #Output to CLI
+        print(colorama.Fore.YELLOW + 'ChatGPT: ' + colorama.Style.RESET_ALL, end='')
+        nansw = answer.split('```')
+        if len(nansw) > 1:
+            #emulate_typing(nansw[0].strip()[:-1])
+        if len(parse_answer) = answer.split
+
+
     except:
         print(colorama.Fore.YELLOW + "ChatGPT: I'm busy")
