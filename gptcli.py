@@ -52,5 +52,9 @@ while True:
             model="gpt-3.5-turbo",
             messages=messages
         )
+
+        #Get text from API response
+        answer = response['choices'][0]['message']['content']
+        
     except:
         print(colorama.Fore.YELLOW + "ChatGPT: I'm busy")
