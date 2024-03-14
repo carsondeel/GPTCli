@@ -27,8 +27,8 @@ COLOR_SCHEME = {
   Number:             ('blue',         'brightyellow')
 }
 
-#OpenAI authorization
-openai.api_key = os.getenv("OPENAI_API_KEY")
+#My personal key is removed for privacy. Add user API key as string
+openai.api_key = ""
 
 #Set AI behavior
 messages=[{'role': 'system', 'content': 'You are a programming assistant in this session.'}]
@@ -55,6 +55,13 @@ while True:
 
         #Get text from API response
         answer = response['choices'][0]['message']['content']
+
+        #Add messages
+        messages.append({
+            'role': 'assistant',
+            'content': answer
+        })
+
         
     except:
         print(colorama.Fore.YELLOW + "ChatGPT: I'm busy")
