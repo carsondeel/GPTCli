@@ -73,9 +73,14 @@ while True:
 
         #Output to CLI
         print(colorama.Fore.YELLOW + 'ChatGPT: ' + colorama.Style.RESET_ALL, end='')
-        nansw = answer.split('```')
+        parsed = answer.split('```')
         if len(nansw) > 1:
-            #typing(nansw[0].strip()[:-1])
+            typing(parsed[0].strip()[:-1])
+            for a in parsed:
+                if len(a.split('\n')[0]):
+                    raw_code = '\n'.join(a.split('\n')[1:])
+                    #highlighted = colorize(raw_code)
+
         if len(parse_answer) = answer.split
 
 
