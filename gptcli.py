@@ -85,10 +85,9 @@ while True:
             for a in parsed:
                 if len(a.split('\n')[0]):
                     raw_code = '\n'.join(a.split('\n')[1:])
-                    #highlighted = colorize(raw_code)
-
-        #if len(parse_answer) = answer.split
-
-
+                    highlighted = colorize(raw_code)
+                    if raw_code != "    \n    ": typing(highlighted.strip())
+                else: typing('\n' + a.strip())
+        else: typing(answer.strip())
     except:
         print(colorama.Fore.YELLOW + "ChatGPT: I'm busy")
