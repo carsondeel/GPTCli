@@ -1,4 +1,5 @@
-import openai
+#!/usr/bin/env python3
+from openai import OpenAI
 import os, time
 from pygments import highlight
 from pygments.lexers import guess_lexer
@@ -26,8 +27,7 @@ COLOR_SCHEME = {
 }
 
 #My personal key is removed for privacy. Add user API key as string
-openai.api_key = ""
-
+client = OpenAI(api_key="")
 #Set AI behavior
 messages=[{'role': 'system', 'content': 'You are a programming assistant in this session.'}]
 
@@ -50,7 +50,7 @@ def colorize(code):
 while True:
     try:
         #Get input from terminal
-        question = input(colorama.Force.CYAN + 'You: ' + colorama.Style.RESET_ALL, end='')
+        question = input(colorama.Fore.CYAN + 'You: ' + colorama.Style.RESET_ALL)
         if question == 'quit': 
             break
 
@@ -61,13 +61,11 @@ while True:
         })
 
         #API response
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages=messages
-        )
+        response = client.chat.completions.create(model="gpt-3.5-turbo",
+        messages=messages)
 
         #Get text from API response
-        answer = response['choices'][0]['message']['content']
+        answer = response.choices[0].message.content
 
         #Add messages to array
         messages.append({
@@ -87,5 +85,6 @@ while True:
                     if raw_code != "    \n    ": typing(highlighted.strip())
                 else: typing('\n' + a.strip())
         else: typing(answer.strip())
-    except:
-        print(colorama.Fore.YELLOW + "ChatGPT: I'm busy")
+    except Exception as e:
+        print(e)
+        break
