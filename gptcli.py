@@ -42,6 +42,12 @@ def typing(message):
         time.sleep(0.002)
     print(flush=True)
 
+#Colored syntax
+def colorize(code):
+    lexer = guess_lexer(code)
+    formatter = TerminalFormatter(bg = 'dark', colorscheme = COLOR_SCHEME)
+    return highlight(code, lexer, formatter)
+
 #Main loop
 while True:
     try:
@@ -81,7 +87,7 @@ while True:
                     raw_code = '\n'.join(a.split('\n')[1:])
                     #highlighted = colorize(raw_code)
 
-        if len(parse_answer) = answer.split
+        #if len(parse_answer) = answer.split
 
 
     except:
