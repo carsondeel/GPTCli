@@ -33,6 +33,15 @@ openai.api_key = ""
 #Set AI behavior
 messages=[{'role': 'system', 'content': 'You are a programming assistant in this session.'}]
 
+#Typing emulator that prints the message by letter
+def typing(message):
+    for l in message:
+        print(l, end='', flush=True)
+
+        #Testing with 0.002
+        time.sleep(0.002)
+    print(flush=True)
+
 #Main loop
 while True:
     try:
@@ -66,7 +75,7 @@ while True:
         print(colorama.Fore.YELLOW + 'ChatGPT: ' + colorama.Style.RESET_ALL, end='')
         nansw = answer.split('```')
         if len(nansw) > 1:
-            #emulate_typing(nansw[0].strip()[:-1])
+            #typing(nansw[0].strip()[:-1])
         if len(parse_answer) = answer.split
 
 
