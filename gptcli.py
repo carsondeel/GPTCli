@@ -1,5 +1,3 @@
-#!/bin/python3
-
 import openai
 import os, time
 from pygments import highlight
